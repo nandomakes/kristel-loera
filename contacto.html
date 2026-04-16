@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacto · Lic. Kristel Loera · Nutrióloga en San Luis Potosí</title>
+  <meta name="description" content="Agenda tu consulta con Kristel Loera. Presencial en San Luis Potosí o en línea. Respuesta en menos de 24 horas." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='central' font-size='80'%3E%F0%9F%8D%8E%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="logo">Kristel<span>·</span>Loera</a>
+      <nav class="nav__links" aria-label="Principal">
+        <a href="sobre-mi.html">Sobre mí</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="blog.html">Blog</a>
+        <a href="contacto.html" aria-current="page">Contacto</a>
+      </nav>
+      <a href="#contacto" class="btn btn--pill">Agendar consulta →</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="contacto" class="contact">
+      <div class="container contact__grid">
+        <div class="contact__intro">
+          <span class="eyebrow">Contacto</span>
+          <h2>Agenda tu primera<br/>consulta en San Luis Potosí.</h2>
+          <p>
+            Respondo cada mensaje personalmente en menos de 24 horas.
+            Primera consulta incluye valoración completa y plan inicial.
+          </p>
+          <ul class="contact__details">
+            <li><strong>Dirección</strong><span>Av. V. Carranza 1020, Col. Tequisquiapan, SLP</span></li>
+            <li><strong>Teléfono</strong><span>+52 444 123 4567</span></li>
+            <li><strong>Correo</strong><span>hola@kristel-loera-nutricion.mx</span></li>
+            <li><strong>Horario</strong><span>Lun–Vie 9:00–19:00 · Sáb 9:00–14:00</span></li>
+          </ul>
+        </div>
+
+        <form class="form" onsubmit="event.preventDefault(); this.querySelector('.form__ok').hidden=false;">
+          <label>
+            <span>Nombre completo</span>
+            <input type="text" name="nombre" required placeholder="María López" />
+          </label>
+          <label>
+            <span>Correo electrónico</span>
+            <input type="email" name="correo" required placeholder="maria@correo.com" />
+          </label>
+          <label>
+            <span>Teléfono / WhatsApp</span>
+            <input type="tel" name="tel" required placeholder="444 000 0000" />
+          </label>
+          <label>
+            <span>Servicio de interés</span>
+            <select name="servicio" required>
+              <option value="">Selecciona una opción</option>
+              <option>Nutrición clínica</option>
+              <option>Control de peso</option>
+              <option>Nutrición deportiva</option>
+              <option>Nutrición infantil</option>
+              <option>Embarazo y lactancia</option>
+              <option>Consulta en línea</option>
+            </select>
+          </label>
+          <label class="form__full">
+            <span>¿Cómo te puedo ayudar?</span>
+            <textarea name="mensaje" rows="4" placeholder="Cuéntame sobre tus objetivos..."></textarea>
+          </label>
+          <button type="submit" class="btn btn--primary form__submit">Enviar solicitud</button>
+          <p class="form__ok" hidden>¡Gracias! Te escribiré en las próximas 24 horas.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="logo logo--light">Kristel<span>·</span>Loera</a>
+        <p>Nutrición clínica con calidez humana en el corazón de San Luis Potosí.</p>
+      </div>
+      <div class="footer__cols">
+        <div>
+          <h4>Navegación</h4>
+          <a href="sobre-mi.html">Sobre mí</a>
+          <a href="servicios.html">Servicios</a>
+          <a href="blog.html">Blog</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div>
+          <h4>Zonas atendidas</h4>
+          <span>San Luis Potosí capital</span>
+          <span>Soledad de G. Sánchez</span>
+          <span>Rioverde · Matehuala</span>
+          <span>Ciudad Valles</span>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <span>+52 444 123 4567</span>
+          <span>hola@kristel-loera-nutricion.mx</span>
+        </div>
+      </div>
+    </div>
+    <div class="container footer__base">
+      <span>© 2026 Lic. Kristel Loera · Nutrición Clínica · San Luis Potosí, México</span>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const root = document.querySelector('.booking');
+      if (!root) return;
+      const steps = root.querySelectorAll('.booking__step');
+      const show = (name) => steps.forEach(s => s.hidden = s.dataset.step !== name);
+      const dateLabel = root.querySelector('[data-selected-date]');
+      const summaryLabel = root.querySelector('[data-selected-summary]');
+      const state = { date: '', time: '' };
+
+      const datesHost = root.querySelector('[data-dates]');
+      const today = new Date();
+      const dowFmt = new Intl.DateTimeFormat('es-MX', { weekday: 'short' });
+      const monthFmt = new Intl.DateTimeFormat('es-MX', { month: 'short' });
+      const fullFmt = new Intl.DateTimeFormat('es-MX', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+      const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+
+      for (let i = 1; i <= 7; i++) {
+        const d = new Date(today);
+        d.setDate(today.getDate() + i);
+        if (d.getDay() === 0) continue;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'date-chip';
+        btn.dataset.date = fullFmt.format(d);
+        btn.innerHTML = `<span class="date-chip__dow">${cap(dowFmt.format(d).replace('.',''))}</span>
+                         <span class="date-chip__day">${d.getDate()}</span>
+                         <span class="date-chip__mon">${cap(monthFmt.format(d).replace('.',''))}</span>`;
+        btn.addEventListener('click', () => {
+          state.date = btn.dataset.date;
+          dateLabel.textContent = cap(state.date);
+          show('slots');
+        });
+        datesHost.appendChild(btn);
+      }
+
+      root.querySelectorAll('.slot').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.time = btn.dataset.time;
+          summaryLabel.textContent = `${cap(state.date)} · ${state.time}`;
+          show('details');
+        });
+      });
+      root.querySelectorAll('.booking__back').forEach(b =>
+        b.addEventListener('click', () => show(b.dataset.back))
+      );
+      root.querySelector('.booking__form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        show('loading');
+        setTimeout(() => show('success'), 2000);
+      });
+
+      const modal = document.querySelector('[data-modal]');
+      const openModal = () => { show('dates'); modal.hidden = false; document.body.style.overflow = 'hidden'; };
+      const closeModal = () => { modal.hidden = true; document.body.style.overflow = ''; };
+      document.querySelectorAll('[data-open-booking]').forEach(b => b.addEventListener('click', openModal));
+      document.querySelectorAll('[data-close-booking]').forEach(b => b.addEventListener('click', closeModal));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+    })();
+  </script>
+</body>
+</html>
