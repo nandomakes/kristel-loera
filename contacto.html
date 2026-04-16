@@ -23,6 +23,9 @@
         <a href="contacto.html" aria-current="page">Contacto</a>
       </nav>
       <a href="#contacto" class="btn btn--pill">Agendar consulta →</a>
+      <button class="nav__toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
@@ -175,5 +178,6 @@
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
     })();
   </script>
+  <script src="nav.js"></script>
 </body>
 </html>
